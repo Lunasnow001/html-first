@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Calculator</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    .container {
+        background-color: darkcyan;
+        color: aliceblue;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .input {
+        width: 100%;
+        font-size: 20px;
+        height: 30px;
+        border-radius: 5px;
+        border: none;
+    }
+
+    .payment {
+        font-weight: 600;
+        font-size: 20px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1>เครื่องคำนวณสินเชื่อ</h1>
+        <p>จำนวนเงินกู้ $ <input onchange="calculateLoan();" class="input" type="number" id="loan-amount" min="1"
+                max="500000" value="10000"></p>
+
+        <p>อัตราดอกเบี้ย % <input onchange="calculateLoan();" class="input" type="number" id="interest-rate" min="0"
+                max="100" value="10" step=".1"></p>
+
+        <p>เดือนที่ต้องชำระ <input onchange="calculateLoan();" class="input" type="number" id="months-to-pay" min="6"
+                max="48" value="12"></p>
+
+        <p class="payment" id="payment">ผ่อนชำระรายเดือน : </p>
+    </div>
+
+    <script>
+        
+        function calculateLoan(){
+            loanAmountValue = document.getElementById("loan-amount").value
+            InterestRateValue = document.getElementById("interest-rate").value
+            MonthsToPayValue = document.getElementById("months-to-pay").value
+
+            interest = (loanAmountValue * (InterestRateValue * 0.01)) / MonthsToPayValue 
+
+            monthlyPayment = (loanAmountValue / MonthsToPayValue + interest).toFixed(2);
+
+            document.getElementById("payment").innerHTML = `ผ่อนชำระรายเดือน : ${monthlyPayment}`;
+        };
+
+    </script>
+
+</body>
+
+</html>

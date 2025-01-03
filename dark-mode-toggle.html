@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode Toggle</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .input {
+        visibility: hidden;
+    }
+
+    .label {
+        position: absolute;
+        width: 80px;
+        height: 40px;
+        background-color: lightgray;
+        border-radius: 20px;
+    }
+
+    .circle {
+        width: 34px;
+        background-color: white;
+        height: 34px;
+        border-radius: 50%;
+        top: 3px;
+        position: absolute;
+        left: 3px;
+        animation: toggleOff 0.4s linear forwards;
+    }
+
+    .input:checked+.label {
+        background-color: salmon;
+    }
+
+    .input:checked+.label .circle {
+        animation: toggleOn 0.4s linear forwards;
+    }
+
+    @keyframes toggleOn {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(40px);
+        }
+
+    }
+</style>
+
+<body>
+
+    <input class="input" type="checkbox" id="dark-mode">
+    <label for="dark-mode" class="label">
+        <div class="circle"></div>
+    </label>
+
+    <script>
+
+        const inputEl = document.querySelector(".input");
+        const bodyEl = document.querySelector("body");
+
+        console.log(inputEl.checked);
+
+        inputEl.checked = false;
+
+        updatebody()
+        
+        function updatebody(){
+            if (inputEl.checked) {
+                bodyEl.style.background = "black"
+            } else {
+                bodyEl.style.background = "white"
+            }
+        }
+
+        inputEl.addEventListener("input", () => {
+            updatebody();
+        })
+    </script>
+</body>
+
+</html>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonial Slider</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+        align-items: center;
+        font-family: cursive;
+    }
+
+    .testmonial {
+        width: 500px;
+        height: 300px;
+        background-color: slateblue;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .3);
+        min-width: 400px;
+        padding: 70px 20px;
+        margin: 5px;
+        color: white;
+        position: relative;
+    }
+
+    img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: -50px;
+    }
+
+    .username {
+        font-size: 13px;
+        font-weight: 100;
+    }
+</style>
+
+<body>
+
+    <div class="testmonial">
+        <img src="https://plus.unsplash.com/premium_photo-1683121366070-5ceb7e007a97?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D"
+            alt="user-image">
+        <p class="text">I am extremely satisfied with my experience with apple. The 222-555-666 product they offer
+            exceeded my expectations. The customer service was top-notch and the sssss feature really sealed the deal. I
+            highly recommend apple for anyone looking for quality products.</p>
+        <h4 class="username">Eva Simmons</h4>
+    </div>
+
+    <script>
+        const testmonials = [
+            {
+                name: "Eva Simmons",
+                photoUr: "https://plus.unsplash.com/premium_photo-1683121366070-5ceb7e007a97?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D",
+                text: "I am extremely satisfied with my experience with apple. The 222-555-666 product they offer exceeded my expectations. The customer service was top-notch and the sssss feature really sealed the deal. I highly recommend apple for anyone looking for quality products."
+            },
+            {
+                name: "Emily Johnson",
+                photoUr: "https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D",
+                text: "I am extremely satisfied with the exceptional quality of the products provided by apple. Their 222-555-666 exceeded all my expectations and the customer service was outstanding. I highly recommend apple to anyone looking for top-notch products. 10/10 would buy again."
+            },
+            {
+                name: "Emma Johnson",
+                photoUr: "https://images.unsplash.com/photo-1640951613773-54706e06851d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8dXNlcnxlbnwwfHwwfHx8Mg%3D%3D",
+                text: "I am truly impressed with the innovative technology offered by apple. Their 222-555-666 product is sssss and exceeds all my expectations. Thank you for such a great product!"
+            }
+        ];
+        console.log(testmonials)
+
+        const imgEl = document.querySelector("img");
+        const textEl = document.querySelector(".text");
+        const usernameEl = document.querySelector(".username");
+
+        let idx = 0;
+
+        updateTestmonial();
+
+        function updateTestmonial() {
+            const { name, photoUr, text } = testmonials[idx];
+            imgEl.src = photoUr;
+            textEl.innerText = text;
+            usernameEl.innerText = name;
+            idx++
+            if (idx === testmonials.length) {
+                idx = 0;
+            }
+            setTimeout(() => {
+                updateTestmonial();
+            }, 2000);
+        }
+
+    </script>
+</body>
+
+</html>
